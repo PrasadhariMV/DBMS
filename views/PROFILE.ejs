@@ -1,0 +1,183 @@
+<html>
+<head>
+<title>PROFILE</title>
+<link rel="stylesheet" href="assets/css/profile_style.css">
+<style>
+</style>
+</head>
+<body background="assets/images/grad4.jpg">
+	<!-- HEADER -->
+	<div class="header">
+	<img src="assets/images/logo4.jpg" style="width:170px;height:70px;float:left;border-radius:20px;">
+			<a href="/home" style="width:130px;height:70px;float:left;border-radius:20px;">HOME</a>
+			<a href="/abtus" style="width:170px;height:70px;float:left;border-radius:20px;">ABOUT</a>
+			<div class="header-right">
+			    <a href="#"><%=currentUser.phoneNumber%></a>
+				<a href="#">Rs <%=currentUser.wallet%></a>
+				<a href="#"><%=currentUser.email%></a>
+				<a href="/logout">Logout</a>
+				<a href="/delete">Delete Account</a>
+			</div>
+	</div>
+
+	 
+
+	  <h1 style="color:orange">User Wallet</h1>
+	   <% if(!data.userWallet) { %>
+         <table>
+             <tr>
+			    <th>Transaction Id</th>
+			    <th>Amount</th>
+			    <th>Type</th>		    
+            </tr>
+             <tr>
+			    <td>Null</td>
+			    <td>Null</td>
+			    <td>Null</td>
+			 </tr>
+         </table>   
+	   <%}else{%>
+	     <table>
+              <tr>
+			     <th>Transaction Id</th>
+			     <th>Amount</th>
+			     <th>Type</th>		    
+              </tr>
+	          <% data.userWallet.forEach(wallet =>{%>	
+                 <tr>
+			       <td><%=wallet.transId%></td>
+			       <td><%=wallet.amount%></td>
+			       <td><%=wallet.type%></td>
+			     </tr>
+		      <%})%>	 
+         </table>
+        <%}%>
+
+  
+       <br><br><br>
+
+     
+       <br><br><br>
+
+       <h1 style="color:orange">Recahrge</h1>
+	   <% if(!data.recharge) { %>
+         <table>
+             <tr>
+			    <th>Recharge Id</th>
+			    <th>Operator</th>
+			    <th>Plan</th>
+			    <th>Reacharged Number</th>
+			    <th>amount</th>		    
+            </tr>
+             <tr>
+			    <td>Nothing Found</td>
+			    <td>Nothing Found</td>
+			    <td>Nothing Found</td>
+			    <td>Nothing Found</td>
+			    <td>Nothing Found</td>
+			 </tr>
+         </table>   
+	   <%}else{%>
+	     <table>
+              <tr>
+			    <th>Recharge Id</th>
+			    <th>Operator</th>
+			    <th>Plan</th>
+			    <th>Reacharged Number</th>
+			    <th>amount</th>		    
+            </tr>
+	          <% data.recharge.forEach(rech =>{%>	
+                 <tr>
+			       <td><%=rech.rechargeId%></td>
+			       <td><%=rech.operator%></td>
+			       <td><%=rech.plan%></td>
+			       <td><%=rech.rechargedNumber%></td>
+			       <td><%=rech.amount%></td>
+			     </tr>
+		      <%})%>	 
+         </table>
+        <%}%>
+
+       
+       <br><br><br>
+ 
+      <br><br><br>
+
+
+       <h1 style="color:orange">Book Bus</h1>
+	   <% if(!data.bookBus) { %>
+         <table>
+             <tr>
+			    <th>Booking Id</th>
+			    <th>Bus Id</th>
+			    <th>Amount</th>		    
+            </tr>
+             <tr>
+			    <td>Null</td>
+			    <td>Null</td>
+			    <td>Null</td>
+			 </tr>
+         </table>   
+	   <%}else{%>
+	     <table>
+               <tr>
+			    <th>Booking Id</th>
+			    <th>Bus Id</th>
+			    <th>Amount</th>		    
+               </tr>
+	          <% data.bookBus.forEach(bus =>{%>	
+                 <tr>
+			       <td><%=bus.bookingId%></td>
+			       <td><%=bus.busId%></td>
+			       <td><%=bus.amount%></td>
+			     </tr>
+		      <%})%>	 
+         </table>
+        <%}%>
+
+
+            <br><br><br>
+ 
+      <br><br><br>
+
+
+       <h1 style="color:orange">Book Movie</h1>
+	   <% if(!data.bookMovie) { %>
+         <table>
+             <tr>
+			    <th>Booking Id</th>
+			    <th>Movie Id</th>
+			    <th>Movie Name</th>
+			    <th>Amount</th>		    
+            </tr>
+             <tr>
+			    <td>Null</td>
+			    <td>Null</td>
+			    <td>Null</td>			    
+			    <td>Null</td>
+			 </tr>
+         </table>   
+	   <%}else{%>
+	     <table>
+               <tr>
+			    <th>Booking Id</th>
+			    <th>Movie Id</th>
+			    <th>Movie Name</th>
+			    <th>Amount</th>		
+               </tr>
+	          <% data.bookMovie.forEach(movie =>{%>	
+                 <tr>
+			       <td><%=movie.bookingId%></td>
+			       <td><%=movie.movieId%></td>
+			       <td><%=movie.movieName%></td>
+			       <td><%=movie.amount%></td>
+			     </tr>
+		      <%})%>	 
+         </table>
+        <%}%>
+ 
+ <script type="text/javascript" src="../assets/lib/jquery.min.js"></script>	
+	 	  	      
+
+</body>
+</html>

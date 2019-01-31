@@ -1,0 +1,487 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+	<title>Incredibles 2</title>
+	<link rel="stylesheet" href="assets/css/movie_every_style.css">
+	<link rel="stylesheet" href="assets/css/movie_style.css">
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<style>
+  #more {display: none;}
+  .review{
+    text-align: right;
+  }
+  .checked {
+    color: orange;
+}
+#t1 {
+    -moz-tab-size: 4; /* Firefox */
+    -o-tab-size: 4; /* Opera 10.6-12.1 */
+    tab-size: 4;
+}
+
+.inmiddle {
+    font-family: Arial;
+    margin: 0 auto; /* Center website */
+    max-width: 800px; /* Max width */
+    padding-top: 45%;
+}
+
+.heading {
+    font-size: 25px;
+    margin-right: 25px;
+}
+
+.fa {
+    font-size: 25px;
+}
+
+.checked {
+    color: orange;
+}
+
+/* Three column layout */
+.side {
+    float: left;
+    width: 15%;
+    margin-top:10px;
+}
+
+.middle {
+    margin-top:10px;
+    float: left;
+    width: 70%;
+}
+
+
+/* Place text to the right */
+.right {
+    text-align: right;
+}
+
+/* Clear floats after the columns */
+.row:after {
+    content: "";
+    display: table;
+    clear: both;
+}
+
+/* The bar container */
+.bar-container {
+    width: 100%;
+    background-color: #f1f1f1;
+    text-align: center;
+    color: white;
+}
+
+/* Individual bars */
+.bar-5 {width: 66.66%; height: 18px; background-color: #4CAF50;}
+.bar-4 {width: 20%; height: 18px; background-color: #2196F3;}
+.bar-3 {width: 6.66%; height: 18px; background-color: #00bcd4;}
+.bar-2 {width: 5%; height: 18px; background-color: #ff9800;}
+.bar-1 {width: 1.66%; height: 18px; background-color: #f44336;}
+
+/* Responsive layout - make the columns stack on top of each other instead of next to each other */
+@media (max-width: 400px) {
+    .side, .middle {
+        width: 100%;
+    }
+    .right {
+        display: none;
+    }
+}
+</style>
+
+
+</head>
+<body background="assets/images/grad2.jpg">
+<div class="header">
+		<img src="assets/images/logo4.jpg" style="width:170px;height:70px;float:left;border-radius:20px;">
+				<div class="header-right">
+				<a href="/home">HOME</a>
+				<a href="/abtus">ABOUT</a>
+				<a href="/PROFILE">PROFILE</a>
+			</div>
+	</div>
+	<br>
+	<center>
+		<img src="assets/images/t7.jpg" style="width:500px; height:200px;" >
+	<p>
+		<h2>
+			Storyline :
+		</h2>
+		Everyone’s favorite family of superheroes is back in “Incredibles 2” – but this time Helen (voice of Holly Hunter) is in the spotlight, leaving Bob (voice of Craig T. Nelson) at home with Violet (voice of Sarah Vowell) and Dash (voice of Huck Milner) to navigate the day-to-day heroics of “normal” life.<span id="dots">...</span><span id="more"> It’s a tough transistion for everyone, made tougher by the fact that the family is still unaware of baby Jack-Jack’s emerging superpowers. When a new villain hatches a brilliant and dangerous plot, the family and Frozone (voice of Samuel L. Jackson) must find a way to work together again—which is easier said than done, even when they’re all Incredible.
+			</span>
+	</p>
+	<button onclick="myFunction()" id="myBtn">Read more</button></p>
+	</center>
+	<div id="trailer">
+		<h2>
+			 Trailer:
+		</h2>
+			<iframe width="870" height="490" src="https://www.youtube.com/embed/ZJDMWVZta3M" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+	</div>
+	<form class="box" action="incredibles2.html" method="post">
+	<br>
+	<center>
+		<div class="custom-select" style="width:200px;">
+			<select onchange="checkTheatre()" id="mylist" required>
+				<option value="0">Theatre Name :</option>
+				<option value="1">INOX</option>
+				<option value="2">PVR</option>
+				<option value="3">FUN Cinemas</option>
+				<option value="4">Cinepolis</option>
+				<option value="5">Big Cinemas</option>
+			</select>
+		</div>
+			<input type="button" value="Confirm Theatre" onclick="checkTheatre()">
+				<p>Your Selected Theatre is : <input type="text" id="demo" readonly></p>
+				
+	</center>
+		<input type="button" name="" value="CHECK Show Time" onclick="showTime()" style="width:auto;">
+		<b><p id="list"></p></b>
+		<h3>Select Number of Tickets you need..</h3>
+				<div id="totsl">
+					<label class="container1">1
+					  <input type="radio" checked="checked" name="radio" id="1" value="1">
+					  <span class="checkmark"></span>
+					</label>
+					<label class="container1">2
+					  <input type="radio" name="radio" id="2" value="2">
+					  <span class="checkmark"></span>
+					</label>
+					<label class="container1">3
+					  <input type="radio" name="radio" id="3" value="3">
+					  <span class="checkmark"></span>
+					</label>
+					<label class="container1">4
+					  <input type="radio" name="radio" id="4" value="4">
+					  <span class="checkmark"></span>
+					</label>
+					<label class="container1">5
+					  <input type="radio" name="radio" id="5" value="5">
+					  <span class="checkmark"></span>
+					</label>
+					</div>
+					<br>
+					<input type="button" value="Check Price" onclick="ticketPrice()">
+				<b><p id="price"></p></b>	
+				<b><p id="totalp"></p></b>
+		<div id="overlay" onclick="off()">
+						<div id="text">Ticket Booked Successfully...!
+							<input type="text" id="ex1" readonly></div>
+						</div>
+				<input type="button" name="" value="BOOK" onclick="on(); movieid();">
+				
+			
+		
+		</form>
+		<div class="inmiddle">
+		<h2>
+			Reviews and Ratings:
+			<center>
+		<span class="fa fa-star checked"></span>
+		<span class="fa fa-star checked"></span>
+		<span class="fa fa-star checked"></span>
+		<span class="fa fa-star checked"></span>
+		<span class="fa fa-star"></span>
+		<pre id="t1">
+		<b>7.9/10 by IMDB</b></pre>
+				</center>
+				</h2>
+				<p>
+				Brad Bird’s The Incredibles 2 is, much like its predecessor, delightful as an animated feature but really, really delightful as a superhero picture.
+				<div class="review">
+				David Edelstein<br>
+				Vulture
+				</div>
+				</p>
+				<p>
+				Pixar once again encourages us to think as we laugh and marvel and cringe and smile. 
+				<div class="review">
+				Paul Asay<br>
+				Plugged In
+				</div>
+				</p>
+				<p>
+				The Incredibles 2 is more than peak summer entertainment. It's an exhilarating gift.
+				<div class="review">
+				Peter Travers<br>
+				Rolling Stone
+				</div>
+				</p>
+				<p>
+				This is the rare sequel that lives up to everyone's massive expectations and delivers as much of the joy, pathos, and adventure as the original. <div class="review">
+				Sandie Angulo Chen<br>
+				Common Sense Media</div>
+				</p>
+		<span class="heading">User Rating</span>
+		<span class="fa fa-star checked"></span>
+		<span class="fa fa-star checked"></span>
+		<span class="fa fa-star checked"></span>
+		<span class="fa fa-star checked"></span>
+		<span class="fa fa-star"></span>
+		<p>4.4 average based on 300 reviews.</p>
+		<hr style="border:3px solid #f1f1f1">
+
+		<div class="row">
+		  <div class="side">
+			<div>5 star</div>
+		  </div>
+		  <div class="middle">
+			<div class="bar-container">
+			  <div class="bar-5"></div>
+			</div>
+		  </div>
+		  <div class="side right">
+			<div>200</div>
+		  </div>
+		  <div class="side">
+			<div>4 star</div>
+		  </div>
+		  <div class="middle">
+			<div class="bar-container">
+			  <div class="bar-4"></div>
+			</div>
+		  </div>
+		  <div class="side right">
+			<div>60</div>
+		  </div>
+		  <div class="side">
+			<div>3 star</div>
+		  </div>
+		  <div class="middle">
+			<div class="bar-container">
+			  <div class="bar-3"></div>
+			</div>
+		  </div>
+		  <div class="side right">
+			<div>20</div>
+		  </div>
+		  <div class="side">
+			<div>2 star</div>
+		  </div>
+		  <div class="middle">
+			<div class="bar-container">
+			  <div class="bar-2"></div>
+			</div>
+		  </div>
+		  <div class="side right">
+			<div>15</div>
+		  </div>
+		  <div class="side">
+			<div>1 star</div>
+		  </div>
+		  <div class="middle">
+			<div class="bar-container">
+			  <div class="bar-1"></div>
+			</div>
+		  </div>
+		  <div class="side right">
+			<div>5</div>
+		  </div>
+		</div>
+		</div>
+
+		
+			
+	
+	<br><br><br>
+		
+	<script>
+		function myFunction() {
+		  var dots = document.getElementById("dots");
+		  var moreText = document.getElementById("more");
+		  var btnText = document.getElementById("myBtn");
+
+		  if (dots.style.display === "none") {
+			dots.style.display = "inline";
+			btnText.innerHTML = "Read more"; 
+			moreText.style.display = "none";
+		  } else {
+			dots.style.display = "none";
+			btnText.innerHTML = "Read less"; 
+			moreText.style.display = "inline";
+		  }
+		}
+	</script>
+	<script>
+		function on() {
+			document.getElementById("overlay").style.display = "block";
+		}
+		function off(){
+			document.getElementById("overlay").style.display = "none";
+		}
+	</script>
+	<script>
+		var x,i,j,selElmt,a,b,c;
+		x = document.getElementsByClassName("custom-select");
+			for(i = 0; i < x.length; i++)
+			{
+				selElmt = x[i].getElementsByTagName("select")[0];
+				a = document.createElement("DIV");
+				a.setAttribute("class","select-selected");
+				a.innerHTML = selElmt.options[selElmt.selectedIndex].innerHTML;
+				x[i].appendChild(a);
+				b = document.createElement("DIV");
+				b.setAttribute("class","select-items select-hide");
+				for(j = 0; j < selElmt.length; j++)
+				{
+					c = document.createElement("DIV");
+					c.innerHTML = selElmt.options[j].innerHTML;
+					c.addEventListener("click",function(e) 
+								{
+									var y,i,k,s,h;
+									s = this.parentNode.parentNode.getElementsByTagName("select")[0];
+									h = this.parentNode.previousSibling;
+									for(i=0;i<s.length;i++)
+									{
+										if(s.options[i].innerHTML == this.innerHTML)
+										{
+										
+												s.selectedIndex = i;
+												h.innerHTML = this.innerHTML;
+												y = this.parentNode.getElementsByClassName("same-as-selected");
+												for(k=0;k<y.length;k++){
+												y[k].removeAttribute("class");
+												}
+												this.setAttribute("class","same-as-selected");
+												break;
+										}
+									}
+									h.click();
+								});
+								b.appendChild(c);
+				}
+					x[i].appendChild(b);
+					
+					a.addEventListener("click",function(e)
+					{
+						e.stopPropagation();
+						closeAllSelect(this);
+						this.nextSibling.classList.toggle("select-hide");
+						this.classList.toggle("select-arrow-active");
+					});
+			}
+			function closeAllSelect(elmnt)
+					{
+						var x,y,i,arrNo = [];
+						x = document.getElementsByClassName("select-items");
+						y = document.getElementsByClassName("select-selected");
+						for(i=0;i<y.length;i++)
+						{
+							if(elmnt==y[i]){
+							arrNo.push(i);}
+							else{
+							y[i].classList.remove("select-arrow-active");
+							}
+						}
+						for(i=0;i<x.length;i++)
+						{
+							if(arrNo.indexOf(i)){
+								x[i].classList.add("select-hide");
+							}
+						}
+					}
+		document.addEventListener("click",closeAllSelect);
+	</script>
+	<!-- Confirm Theatre -->
+	<script>
+	function checkTheatre()
+	{
+    var mylist = document.getElementById("mylist");
+	var theatre;
+	document.getElementById("demo").value = mylist.options[mylist.selectedIndex].text;
+    theatre = mylist.options[mylist.selectedIndex].text;
+	}
+	</script>
+	<!-- TIMINGS OF THE MOVIE	 -->
+	<script>
+	function showTime()
+	{
+    var mylist = document.getElementById("mylist");
+	var theatre;
+    theatre = mylist.options[mylist.selectedIndex].text;
+	if (theatre == "PVR"){
+			document.getElementById("list").innerHTML=" SHOW TIMINGS : 18:15:00";}
+	else if (theatre == "Cinepolis"){  
+			document.getElementById("list").innerHTML=" SHOW TIMINGS : 17:50:00";}
+	else if (theatre == "Big Cinemas"){
+			document.getElementById("list").innerHTML=" SHOW TIMINGS : 14:50:00";}
+	else if (theatre == "INOX"){
+			document.getElementById("list").innerHTML=" SHOW TIMINGS : 12:00:00";}
+	else if (theatre == "FUN Cinemas"){
+			document.getElementById("list").innerHTML=" SHOW TIMINGS : 20:15:00";}	
+	}
+</script>
+<!-- PRICE  -->
+<script>
+	const data ={};
+
+  
+  function tcost(pri){
+	var not = document.getElementsByName("radio");
+	var txt = "";
+	var i;
+	for(i = 0;i < not.length; i++){
+		if(not[i].checked){
+			txt = txt+ not[i].value + "";
+			}
+		}
+	document.getElementById("totalp").innerHTML = "Your Total Price is : " +txt * pri;
+	const total = txt*pri;
+	data.amount = total;
+	data.movieName = "Incredibles 2";
+}
+
+function ticketPrice()
+{
+	var theatre = document.getElementById("demo").value;
+	var pri;
+	if (theatre == "PVR"){ pri = "300"; }
+	else if (theatre == "Cinepolis"){ pri = "400"; }
+	else if (theatre == "Big Cinemas"){ pri = "250"; }
+	else if (theatre == "INOX"){ pri = "205"; }
+	else if (theatre == "FUN Cinemas"){ pri = "380"; }
+	document.getElementById("price").innerHTML="Unit Price of the Ticket  : " +pri;
+	tcost(pri);
+	}
+function movieid()
+{
+
+	var mylist = document.getElementById("mylist");
+	var theatre;
+    theatre = mylist.options[mylist.selectedIndex].text;
+	var mid;
+	if(theatre == "PVR")
+	{
+		mid="M101";
+			//document.getElementById("ex1").value = "Movie-ID of Ticket : " + mid;		
+	}
+	if(theatre == "Big Cinemas")
+	{
+		mid="M102";
+			//document.getElementById("ex1").value = "Movie-ID of Ticket : " + mid;		
+	}
+	if(theatre=="INOX")
+	{
+		mid="M103";
+			//document.getElementById("ex1").value = "Movie-ID of Ticket : " + mid;		
+	}
+	if(theatre=="Cinepolis")
+	{
+		mid="M104";
+			//document.getElementById("ex1").value = "Movie-ID of Ticket : " + mid;		
+	}
+	if(theatre=="FUN Cinemas")
+	{
+		mid="M105";
+			//document.getElementById("ex1").value = "Movie-ID of Ticket : " + mid;		
+	}
+	document.getElementById("ex1").value = "Movie-ID of Ticket : " + mid;
+	data.movieId = mid;
+	$.post('/registerBookedMovie',data);
+}	
+</script>		
+<script type="text/javascript" src="../assets/lib/jquery.min.js"></script>	
+</body>
+</html>

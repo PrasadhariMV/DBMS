@@ -1,0 +1,258 @@
+body{
+	margin:0;
+	padding:0;
+	font-family:sans-serif;
+	}
+	* { box-sizing: border-box;}
+	
+	.header {
+		overflow:hidden;
+		background-color:#171717;
+		padding:20px 10px;
+		text-align:center;
+	}
+	.header a {
+		float:left;
+		color:white;
+		text-align:center;
+		padding:12px;
+		text-decoration:none;
+		font-size:18px;
+		line-height:25px;
+		border-radius:4px;
+	}
+	.header a.logo{
+		font-size:25px;
+		font-weight:bold;
+	}
+	.header a:hover{
+		background-color:#ddd;
+		color:black;
+	}
+	.header a.active{
+		background-color:dodgerblue;
+		color:white;
+	}
+	.header-right{
+		float:right;
+	}
+	.header input[type = "text"]{
+	border:0;
+	background:none;
+	/* margin:20px auto;  */
+	text-align:center;
+	border:2px solid #3498db;
+	padding:14px 10px;
+	width:130px;
+	outline:none;
+	color:white;
+	border-radius:24px;
+	transition:0.20s;
+	}
+	
+	/* box */
+	.box{
+	width:1400px;
+	height:50%;
+    /* padding:20px;  */
+	position:fixed;
+	top:15%;
+	left:12%;
+	transform: translate(0.1%,15%);
+	background: #191919;
+	text-align:center;
+border-radius:20px;
+	}
+	
+	.box h1{
+		color:white;
+		font-weight:500;
+		}
+		
+		
+	.box input[type = "text"],.box input[type = "password"]{
+	border:0;
+	background:none;
+	display:block;
+	margin:20px auto;
+	text-align:center;
+	border:2px solid #3498db;
+	padding:14px 10px;
+	width:200px;
+	outline:none;
+	color:white;
+	border-radius:24px;
+	transition:0.10s;
+	}
+	
+	.box input[type = "text"]:focus,.box input[type = "password"]:focus{
+		width:280px;
+		border-color:#2ecc71;
+		}
+		
+	.box input[type = "submit"],.box input[type = "button"]{
+		border:0;
+		background:none;
+		margin:20px auto;
+		text-align:center;
+		border:2px solid #2ecc71;
+		padding:14px 30px;
+		outline:none;
+		color:white;
+		border-radius:24px;
+		transition:0.50s;
+		cursor:pointer;
+			}
+		
+	.box input[type = "submit"]:hover,.box input[type = "button"]:hover{
+		background: #2ecc71;
+		}
+	/* Bank dropdown */
+	.custom-select{
+		position:relative;
+		font-family:sans-serif;
+		border-radius:24px;
+		border-color:#2ecc71;
+	}
+	.custom-select select{
+		display:none;
+		border-radius:24px;
+		border-color:#2ecc71;
+	}
+	.select-selected{
+		background-color:#191919;
+		border-color:#3498db;
+		border-radius:24px;
+	}
+	.select-selected:after{ 
+		position:absolute;
+		content:"";
+		top:14px;
+		right:10px;
+		width:0;
+		height:0;
+		border:6px solid transparent;
+		border-color:#fff transparent transparent transparent;
+	}
+	.select-selected.select-arrow-active:after{
+		border-color:#fff transparent transparent transparent;
+		top:7px;
+		border-radius:24px;
+	}
+	.select-items div,.select-selected{
+		color:#ffffff;
+		padding:8px 16px;
+		border:1px solid transparent;
+		/* border-color:#3498db; */
+		cursor:pointer;
+		border-radius:24px;
+	}
+	.select-items{
+		position:absolute;
+		background-color:#191919;
+		top:100%;
+		left:0;
+		right:0;
+		z-index:99;
+		border-radius:24px;
+		/* border-color:#2ecc71; */
+	}
+	.select-hide{
+		display:none;
+	}
+	.select-items div:hover, .same-as-selected{
+		background-color:rgba(0,0,0,0.1);
+		border-radius:24px;
+		border-color:#3498db;
+	}
+	/* Overlay	*/
+	#overlay { 
+    position: fixed;
+    display: none;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(0,0,0,0.8);
+    z-index: 2;
+    cursor: pointer;
+	}
+
+	#text{
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    font-size: 40px;
+	font-family:sans-serif;
+    color: white;
+    transform: translate(-50%,-50%);
+    -ms-transform: translate(-50%,-50%);
+	}
+	/* image placing */
+	div.relative{
+		position:relative;
+		left:170px;
+	}
+	div.relative1{
+		position:relative;
+		right:170px;
+	}
+	
+	/* modal for verification	*/
+	.modal{
+			display:none;
+		    position:fixed; 
+			z-index:1;
+			left:0;
+			top:0;
+			width:100%;
+			height:100%;
+			overflow:auto;
+			background-color:#191919;
+			padding-top:4px;
+	}
+	.modal-content{
+			background-color:#191919;
+			margin:0% auto 20% auto; 
+		 /* border:1px solid #888;   */
+			width:60%;
+	}
+	.close{
+			position:absolute;
+			right:25px;
+			top:0;
+			color:#000;
+			font-size:35px;
+			font-weight:bold;
+	}
+	.close:hover,.close:focus{
+			color:red;
+			cursor:pointer;
+	}
+	.animate{
+			-webkit-animation: animatezoom 0.6s;
+			animation:animatezoom 0.6s;
+	}
+
+	.imgcontainer{
+			text-align:center;
+			margin:24px 0 12px 0;
+			position:relative;
+	}
+	img.avatar{
+		width:40%;
+		border-radius:50%;
+	}
+	.container{
+		padding:16px;
+	}
+	span.psw{
+		float:right;
+		padding-top:16px;
+	}
+	.img{
+		padding:80px;
+		
+		}

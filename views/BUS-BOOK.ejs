@@ -1,0 +1,731 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>BUS BOOK</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="assets/css/bus_style.css">
+<style>
+
+
+@-webkit-keyframes fade {
+  from {opacity: .4} 
+  to {opacity: 1}
+}
+
+@keyframes fade {
+  from {opacity: .4} 
+  to {opacity: 1}
+}
+
+/* On smaller screens, decrease text size */
+@media only screen and (max-width: 300px) {
+  .text {font-size: 11px}
+}
+
+
+
+</style>
+</head>
+<body background="assets/images/grad2.jpg">
+<div class="header">
+			<img src="assets/images/logo4.jpg" style="width:170px;height:70px;float:left;border-radius:20px;">
+			<div class="header-right">
+				<a href="/home">HOME</a>
+				<a href="/abtus">ABOUT</a>
+				<a href="/PROFILE">PROFILE</a>
+			</div>
+	</div>
+<h1><center>Book Your Journey here...</center></h1>
+
+
+<div class="slideshow-container">
+
+<div class="mySlides fade">
+  <div class="numbertext">1 / 3</div>
+  <img src="assets/images/bus2.jpg" width="1000px" height="500px" style="border-radius:20px;">
+  <div class="text"><font size="6px" color="black">Book Tickets</font></div>
+</div>
+
+<div class="mySlides fade">
+  <div class="numbertext">2 / 3</div>
+  <img src="assets/images/bus.jpg" width="1000px" height="500px" style="border-radius:20px;">
+  <div class="text"><font size="6px" >Move on for JOURNEY..</font></div>
+</div>
+
+<div class="mySlides fade">
+  <div class="numbertext">3 / 3</div>
+  <img src="assets/images/bus1.jpg" width="1000px" height="500px" style="border-radius:20px;">
+  <div class="text"><font size="6px">Make Memories!!!</font></div>
+</div>
+
+<div style="text-align:center">
+  <span class="dot"></span> 
+  <span class="dot"></span> 
+  <span class="dot"></span> 
+</div>
+
+</div>
+<br>
+<br><br><br>
+<form class="box" action="BUS-BOOK.html" method="post">
+		<center>
+			<form autocomplete="off" action="BUS-BOOK.html">	
+			  <div class="autocomplete" style="width:100%;">
+			  <input id="source" type="text" name="source" placeholder="From"> 
+				<input id="destination" type="text" name="destination" placeholder="To">
+				</div>
+				<input type="button" value="Check Buses" onclick="checkBus()">
+				<p id="checkbus"></p>
+
+			
+			
+				<h3>Available Buses are...</h3>
+				
+				<select id="mylist" onchange="checkBus()">
+				  <option>RajaHamsa</option>
+				  <option>Airavat</option>
+				  <option>Volvo</option>  
+				  <option>SeaBird</option>
+				  <option>Triguna</option>		  
+				</select>
+				
+		<p>Your Selected Bus is : <input type="text" id="demo" readonly></p>
+				<b><p id="list"></p></b>
+				
+				<h3>Select Number of Tickets you need..</h3>
+				<div id="totsl">
+					<label class="container1">1
+					  <input type="radio" checked="checked" name="radio" id="1" value="1">
+					  <span class="checkmark"></span>
+					</label>
+					<label class="container1">2
+					  <input type="radio" name="radio" id="2" value="2">
+					  <span class="checkmark"></span>
+					</label>
+					<label class="container1">3
+					  <input type="radio" name="radio" id="3" value="3">
+					  <span class="checkmark"></span>
+					</label>
+					<label class="container1">4
+					  <input type="radio" name="radio" id="4" value="4">
+					  <span class="checkmark"></span>
+					</label>
+					<label class="container1">5
+					  <input type="radio" name="radio" id="5" value="5">
+					  <span class="checkmark"></span>
+					</label>
+					</div>
+					<input type="button" value="Check Price" onclick="ticketPrice()">
+				<b><p id="price"></p></b>	
+				<b><p id="totalp"></p></b>
+				<div id="overlay" onclick="off()">
+						<div id="text">Ticket Booked Successfully...!
+							<input type="text" id="ex1" readonly></div>
+						</div>
+				<input type="button" name="" value="BOOK" onclick="on(); bid();">
+				
+			
+		
+		</form>
+
+<script>
+var slideIndex = 0;
+showSlides();
+
+function showSlides() {
+    var i;
+    var slides = document.getElementsByClassName("mySlides");
+    var dots = document.getElementsByClassName("dot");
+    for (i = 0; i < slides.length; i++) {
+       slides[i].style.display = "none";  
+    }
+    slideIndex++;
+    if (slideIndex > slides.length) {slideIndex = 1}    
+    for (i = 0; i < dots.length; i++) {
+        dots[i].className = dots[i].className.replace(" active", "");
+    }
+    slides[slideIndex-1].style.display = "block";  
+    dots[slideIndex-1].className += " active";
+    setTimeout(showSlides, 4000); // Change image every 2 seconds
+}
+</script>
+<script>
+function autocomplete(inp, arr) {
+  /*the autocomplete function takes two arguments,
+  the text field element and an array of possible autocompleted values:*/
+  var currentFocus;
+  /*execute a function when someone writes in the text field:*/
+  inp.addEventListener("input", function(e) {
+      var a, b, i, val = this.value;
+      /*close any already open lists of autocompleted values*/
+      closeAllLists();
+      if (!val) { return false;}
+      currentFocus = -1;
+      /*create a DIV element that will contain the items (values):*/
+      a = document.createElement("DIV");
+      a.setAttribute("id", this.id + "autocomplete-list");
+      a.setAttribute("class", "autocomplete-items");
+      /*append the DIV element as a child of the autocomplete container:*/
+      this.parentNode.appendChild(a);
+      /*for each item in the array...*/
+      for (i = 0; i < arr.length; i++) {
+        /*check if the item starts with the same letters as the text field value:*/
+        if (arr[i].substr(0, val.length).toUpperCase() == val.toUpperCase()) {
+          /*create a DIV element for each matching element:*/
+          b = document.createElement("DIV");
+          /*make the matching letters bold:*/
+          b.innerHTML = "<strong>" + arr[i].substr(0, val.length) + "</strong>";
+          b.innerHTML += arr[i].substr(val.length);
+          /*insert a input field that will hold the current array item's value:*/
+          b.innerHTML += "<input type='hidden' value='" + arr[i] + "'>";
+          /*execute a function when someone clicks on the item value (DIV element):*/
+          b.addEventListener("click", function(e) {
+              /*insert the value for the autocomplete text field:*/
+              inp.value = this.getElementsByTagName("input")[0].value;
+              /*close the list of autocompleted values,
+              (or any other open lists of autocompleted values:*/
+              closeAllLists();
+          });
+          a.appendChild(b);
+        }
+      }
+  });
+  /*execute a function presses a key on the keyboard:*/
+  inp.addEventListener("keydown", function(e) {
+      var x = document.getElementById(this.id + "autocomplete-list");
+      if (x) x = x.getElementsByTagName("div");
+      if (e.keyCode == 40) {
+        /*If the arrow DOWN key is pressed,
+        increase the currentFocus variable:*/
+        currentFocus++;
+        /*and and make the current item more visible:*/
+        addActive(x);
+      } else if (e.keyCode == 38) { //up
+        /*If the arrow UP key is pressed,
+        decrease the currentFocus variable:*/
+        currentFocus--;
+        /*and and make the current item more visible:*/
+        addActive(x);
+      } else if (e.keyCode == 13) {
+        /*If the ENTER key is pressed, prevent the form from being submitted,*/
+        e.preventDefault();
+        if (currentFocus > -1) {
+          /*and simulate a click on the "active" item:*/
+          if (x) x[currentFocus].click();
+        }
+      }
+  });
+  function addActive(x) {
+    /*a function to classify an item as "active":*/
+    if (!x) return false;
+    /*start by removing the "active" class on all items:*/
+    removeActive(x);
+    if (currentFocus >= x.length) currentFocus = 0;
+    if (currentFocus < 0) currentFocus = (x.length - 1);
+    /*add class "autocomplete-active":*/
+    x[currentFocus].classList.add("autocomplete-active");
+  }
+  function removeActive(x) {
+    /*a function to remove the "active" class from all autocomplete items:*/
+    for (var i = 0; i < x.length; i++) {
+      x[i].classList.remove("autocomplete-active");
+    }
+  }
+  function closeAllLists(elmnt) {
+    /*close all autocomplete lists in the document,
+    except the one passed as an argument:*/
+    var x = document.getElementsByClassName("autocomplete-items");
+    for (var i = 0; i < x.length; i++) {
+      if (elmnt != x[i] && elmnt != inp) {
+        x[i].parentNode.removeChild(x[i]);
+      }
+    }
+  }
+  /*execute a function when someone clicks in the document:*/
+  document.addEventListener("click", function (e) {
+      closeAllLists(e.target);
+  });
+}
+
+/*An array containing all the country names in the world:*/
+var source = ["Bangalore","Mangalore","Gokarna","Mumbai","Delhi","Bokaro","Ajmer","Panaji"];
+var destination = ["Mysore","Hassan","Karvar","Pune","Agra","Ranchi","Jaipur","Belgaum"];
+
+autocomplete(document.getElementById("source"), source);
+autocomplete(document.getElementById("destination"), destination);
+</script>
+<script>
+function checkBus() {
+	var source = document.getElementById("source").value;
+	var destination = document.getElementById("destination").value;
+	var result;
+		
+	if (source=="Bangalore" & destination=="Mysore"){
+		result = 1;
+		res(result);
+			myFunction(source,destination);}
+	else if (source=="Mangalore" & destination=="Hassan"){
+		result = 2;
+		res(result);
+		myFunction(source,destination);}
+	else if (source=="Gokarna" & destination=="Karvar"){
+		result = 3;
+		res(result);
+		myFunction(source,destination);}
+	else if (source=="Mumbai" & destination=="Pune"){
+		result = 4;
+		res(result);
+		myFunction(source,destination);}
+	else if (source=="Delhi" & destination=="Agra"){
+		result = 5;
+		res(result);
+		myFunction(source,destination);}
+	else if (source=="Bokaro" & destination=="Ranchi"){
+		result = 6;
+		res(result);
+		myFunction(source,destination);}
+	else if (source=="Ajmer" & destination=="Jaipur"){
+		result = 7;
+		res(result);
+		myFunction(source,destination);}
+	else if (source=="Panaji" & destination=="Belgaum"){
+		result = 8;
+		res(result);
+		myFunction(source,destination);}
+	else{
+		result = 0;
+		res(result);}
+	}
+function res(result)
+{	if (result == 0) {
+		document.getElementById("checkbus").innerHTML="Buses are NOT Available";}
+	else{
+		document.getElementById("checkbus").innerHTML = "BUSES are AVAILABLE..";}
+}
+
+
+</script>
+<script>
+function myFunction(s,d)
+{
+	
+    var mylist = document.getElementById("mylist");
+	var bus;
+    document.getElementById("demo").value = mylist.options[mylist.selectedIndex].text;
+	bus = mylist.options[mylist.selectedIndex].text;
+	if(s=="Bangalore" & d=="Mysore")
+	{
+		if (bus == "RajaHamsa"){
+			document.getElementById("list").innerHTML="TIMINGS : Departure = 10:00:00 and Arrival = 12:45:00 ";}
+		else if (bus == "Airavat"){  
+			document.getElementById("list").innerHTML="TIMINGS : Departure = 12:15:00 and Arrival = 15:00:00 ";}
+		else if (bus == "Volvo"){
+			document.getElementById("list").innerHTML="TIMINGS : Departure = 04:00:00 and Arrival = 06:45:00 ";}
+		else if (bus == "SeaBird"){
+			document.getElementById("list").innerHTML="TIMINGS : Departure = 08:00:00 and Arrival = 10:45:00 ";}
+		else if (bus == "Triguna"){
+			document.getElementById("list").innerHTML="TIMINGS : Departure = 16:50:00 and Arrival = 19:45:00 ";}
+		
+	}
+	if(s == "Mangalore" & d =="Hassan")
+	{
+		if (bus == "Airavat"){
+			document.getElementById("list").innerHTML="TIMINGS : Departure = 11:00:00 and Arrival = 14:45:00 ";}
+		else if (bus == "RajaHamsa"){
+			document.getElementById("list").innerHTML="TIMINGS : Departure = 05:00:00 and Arrival = 08:45:00 ";}
+		else if (bus == "Volvo"){
+			document.getElementById("list").innerHTML="TIMINGS : Departure = 12:00:00 and Arrival = 02:45:00 ";}
+		else if (bus == "SeaBird"){
+			document.getElementById("list").innerHTML="TIMINGS : Departure = 16:30:00 and Arrival = 18:55:00 ";}
+		else if (bus == "Triguna"){
+			document.getElementById("list").innerHTML="TIMINGS : Departure = 19:00:00 and Arrival = 22:00:00 ";}
+	}
+	if(s=="Gokarna" & d=="Karvar")
+	{
+		if (bus == "RajaHamsa"){
+			document.getElementById("list").innerHTML="TIMINGS : Departure = 11:00:00 and Arrival = 12:25:00 ";}
+		else if (bus == "Airavat"){
+			document.getElementById("list").innerHTML="TIMINGS : Departure = 17:00:00 and Arrival = 18:25:00 ";}
+		else if (bus == "Volvo"){
+			document.getElementById("list").innerHTML="TIMINGS : Departure = 06:00:00 and Arrival = 07:35:00 ";}
+		else if (bus == "SeaBird"){
+			document.getElementById("list").innerHTML="TIMINGS : Departure = 13:00:00 and Arrival = 14:25:00 ";}
+		else if (bus == "Triguna"){
+			document.getElementById("list").innerHTML="TIMINGS : Departure = 08:00:00 and Arrival = 09:30:00 ";}
+	}
+	if(s=="Mumbai" & d=="Pune")
+	{
+		if (bus == "Airavat"){
+			document.getElementById("list").innerHTML="TIMINGS : Departure = 12:00:00 and Arrival = 14:55:00 ";}
+		else if (bus == "RajaHamsa"){
+			document.getElementById("list").innerHTML="TIMINGS : Departure = 12:20:00 and Arrival = 15:15:00 ";}
+		else if (bus == "Volvo"){
+			document.getElementById("list").innerHTML="TIMINGS : Departure = 16:00:00 and Arrival = 18:55:00 ";}
+		else if (bus == "SeaBird"){
+			document.getElementById("list").innerHTML="TIMINGS : Departure = 10:00:00 and Arrival = 13:00:00 ";}
+		else if (bus == "Triguna"){
+			document.getElementById("list").innerHTML="TIMINGS : Departure = 19:00:00 and Arrival = 21:55:00 ";}
+	}
+	if(s=="Delhi" & d=="Agra")
+	{
+		if (bus == "Airavat"){
+			document.getElementById("list").innerHTML="TIMINGS : Departure = 12:00:00 and Arrival = 15:15:00 ";}
+		else if (bus == "RajaHamsa"){
+			document.getElementById("list").innerHTML="TIMINGS : Departure = 13:00:00 and Arrival = 16:55:00 ";}
+		else if (bus == "Volvo"){
+			document.getElementById("list").innerHTML="TIMINGS : Departure = 10:00:00 and Arrival = 13:55:00 ";}
+		else if (bus == "SeaBird"){
+			document.getElementById("list").innerHTML="TIMINGS : Departure = 18:00:00 and Arrival = 21:55:00 ";}
+		else if (bus == "Triguna"){
+			document.getElementById("list").innerHTML="TIMINGS : Departure = 20:00:00 and Arrival = 22:55:00 ";}
+	}
+	if(s=="Bokaro" & d=="Ranchi")
+	{
+		if (bus == "Airavat"){
+			document.getElementById("list").innerHTML="TIMINGS : Departure = 12:00:00 and Arrival = 15:00:00 ";}
+		else if (bus == "RajaHamsa"){
+			document.getElementById("list").innerHTML="TIMINGS : Departure = 15:00:00 and Arrival = 18:00:00 ";}
+		else if (bus == "Volvo"){
+			document.getElementById("list").innerHTML="TIMINGS : Departure = 18:00:00 and Arrival = 21:00:00 ";}
+		else if (bus == "SeaBird"){
+			document.getElementById("list").innerHTML="TIMINGS : Departure = 13:10:00 and Arrival = 16:00:00 ";}
+		else if (bus == "Triguna"){
+			document.getElementById("list").innerHTML="TIMINGS : Departure = 12:45:00 and Arrival = 15:10:00 ";}
+	}
+	if(s=="Ajmer" & d=="Jaipur")
+	{
+		if (bus == "Airavat"){
+			document.getElementById("list").innerHTML="TIMINGS : Departure = 13:00:00 and Arrival = 15:25:00 ";}
+		else if (bus == "RajaHamsa"){
+			document.getElementById("list").innerHTML="TIMINGS : Departure = 14:00:00 and Arrival = 16:20:00 ";}
+		else if (bus == "Volvo"){
+			document.getElementById("list").innerHTML="TIMINGS : Departure = 16:00:00 and Arrival = 17:20:00 ";}
+		else if (bus == "SeaBird"){
+			document.getElementById("list").innerHTML="TIMINGS : Departure = 17:00:00 and Arrival = 19:20:00 ";}
+		else if (bus == "Triguna"){
+			document.getElementById("list").innerHTML="TIMINGS : Departure = 10:00:00 and Arrival = 12:20:00 ";}
+	}
+	if(s=="Panaji" & d=="Belgaum")
+	{
+		if (bus == "Airavat"){
+			document.getElementById("list").innerHTML="TIMINGS : Departure = 10:15:00 and Arrival = 13:40:00 ";}
+		else if (bus == "RajaHamsa"){
+			document.getElementById("list").innerHTML="TIMINGS : Departure = 18:15:00 and Arrival = 22:40:00 ";}
+		else if (bus == "Volvo"){
+			document.getElementById("list").innerHTML="TIMINGS : Departure = 17:35:00 and Arrival = 21:40:00 ";}
+		else if (bus == "SeaBird"){
+			document.getElementById("list").innerHTML="TIMINGS : Departure = 10:45:00 and Arrival = 14:00:00 ";}
+		else if (bus == "Triguna"){
+			document.getElementById("list").innerHTML="TIMINGS : Departure = 11:15:00 and Arrival = 14:40:00 ";}
+	}
+	
+}
+</script>
+<script>
+const data = {};
+function bid()
+{
+var source = document.getElementById("source").value;
+	var destination = document.getElementById("destination").value;
+	<!-- document.getElementById("demo").value = mylist.options[mylist.selectedIndex].text; -->
+	var bus = mylist.options[mylist.selectedIndex].text;
+	var busid;
+
+	var busId = "";
+	if(source == "Bangalore" & destination == "Mysore")
+	{
+		if(bus == "Airavat"){
+			busid = "B101";}
+		else if(bus == "RajaHamsa"){
+			busid="B102";}
+		else if(bus == "Volvo"){
+			busid="B103";}
+		else if(bus == "SeaBird"){
+			busid="B104";}
+		else if(bus == "Triguna"){
+			busid="B105";}
+			
+			busId = busid;
+			//document.getElementById("ex1").value = "BUS-ID of Ticket : " + busid;		
+	}
+	if(source=="Mangalore" & destination=="Hassan")
+	{
+		if(bus=="Airavat"){
+			busid = "B201";}
+		else if(bus=="RajaHamsa"){
+			busid="B202";}
+		else if(bus=="Volvo"){
+			busid="B203";}
+		else if(bus=="SeaBird"){
+			busid="B204";}
+		else if(bus=="Triguna"){
+			busid="B205";}
+			//document.getElementById("ex1").value = "BUS-ID of Ticket : " + busid;
+			busId = busid;
+	}
+	if(source=="Gokarna" & destination=="Karvar")
+	{
+		if(bus=="Airavat")
+			busid = "B301";
+		else if(bus=="RajaHamsa")
+			busid="B302";
+		else if(bus=="Volvo")
+			busid="B303";
+		else if(bus=="SeaBird")
+			busid="B304";
+		else if(bus=="Triguna")
+			busid="B305";
+		//document.getElementById("ex1").value = "BUS-ID of Ticket : " + busid;
+	   busId = busid;
+	}
+	if(source=="Mumbai" & destination=="Pune")
+	{
+		if(bus=="Airavat")
+			busid = "B401";
+		else if(bus=="RajaHamsa")
+			busid="B402";
+		else if(bus=="Volvo")
+			busid="B403";
+		else if(bus=="SeaBird")
+			busid="B404";
+		else if(bus=="Triguna")
+			busid="B405";
+			//document.getElementById("ex1").value = "BUS-ID of Ticket : " + busid;
+	    busId = busid;
+	}
+	if(source=="Delhi" & destination=="Agra")
+	{
+		if(bus=="Airavat")
+			busid = "B501";
+		else if(bus=="RajaHamsa")
+			busid="B502";
+		else if(bus=="Volvo")
+			busid="B503";
+		else if(bus=="SeaBird")
+			busid="B504";
+		else if(bus=="Triguna")
+			busid="B505";
+			//document.getElementById("ex1").value = "BUS-ID of Ticket : " + busid;
+	   busId = busid;
+	}
+	if(source=="Bokaro" & destination=="Ranchi")
+	{
+		if(bus=="Airavat")
+			busid = "B601";
+		else if(bus=="RajaHamsa")
+			busid="B602";
+		else if(bus=="Volvo")
+			busid="B603";
+		else if(bus=="SeaBird")
+			busid="B604";
+		else if(bus=="Triguna")
+			busid="B605";
+			//document.getElementById("ex1").value = "BUS-ID of Ticket : " + busid;
+	   busId = busid;
+	}
+	if(source=="Ajmer" & destination=="Jaipur")
+	{
+		if(bus=="Airavat")
+			busid = "B701";
+		else if(bus=="RajaHamsa")
+			busid="B702";
+		else if(bus=="Volvo")
+			busid="B703";
+		else if(bus=="SeaBird")
+			busid="B704";
+		else if(bus=="Triguna")
+			busid="B705";
+			//document.getElementById("ex1").value = "BUS-ID of Ticket : " + busid;
+	    busId = busid;
+	}
+	if(source=="Panaji" & destination=="Belgaum")
+	{
+		if(bus=="Airavat")
+			busid = "B801";
+		else if(bus=="RajaHamsa")
+			busid="B802";
+		else if(bus=="Volvo")
+			busid="B803";
+		else if(bus=="SeaBird")
+			busid="B804";
+		else if(bus=="Triguna")
+			busid="B805";
+			//document.getElementById("ex1").value = "BUS-ID of Ticket : " + busid;
+	  busId = busid;
+	}
+
+	document.getElementById("ex1").value = "BUS-ID of Ticket : " + busId;
+
+	data.busId = busId;
+	$.post('/registerBookedBus',data);
+}	
+
+function ticketPrice()
+{
+	var source = document.getElementById("source").value;
+	var destination = document.getElementById("destination").value;
+	document.getElementById("demo").value = mylist.options[mylist.selectedIndex].text;
+	var bus = mylist.options[mylist.selectedIndex].text;
+	var pri;
+	if(source == "Bangalore" & destination == "Mysore")
+	{
+		if(bus == "Airavat"){
+			pri = "500";}
+		else if(bus == "RajaHamsa"){
+			pri="300";}
+		else if(bus == "Volvo"){
+			pri="400";}
+		else if(bus == "SeaBird"){
+			pri="350";}
+		else if(bus == "Triguna"){
+			pri="200";}
+			
+			document.getElementById("price").innerHTML = "Unit price of Ticket : " + pri;
+			tcost(pri);
+			
+		
+	}
+	if(source=="Mangalore" & destination=="Hassan")
+	{
+		if(bus=="Airavat"){
+			pri = "500";}
+		else if(bus=="RajaHamsa"){
+			pri="300";}
+		else if(bus=="Volvo"){
+			pri="400";}
+		else if(bus=="SeaBird"){
+			pri="350";}
+		else if(bus=="Triguna"){
+			pri="200";}
+			document.getElementById("price").innerHTML = "Unit price of Ticket : " + pri;
+			tcost(pri);
+	}
+	if(source=="Gokarna" & destination=="Karvar")
+	{
+		if(bus=="Airavat")
+			pri = "500";
+		else if(bus=="RajaHamsa")
+			pri="300";
+		else if(bus=="Volvo")
+			pri="400";
+		else if(bus=="SeaBird")
+			pri="350";
+		else if(bus=="Triguna")
+			pri="200";
+		
+		document.getElementById("price").innerHTML = "Unit price of Ticket : " + pri;
+		tcost(pri);
+	}
+	if(source=="Mumbai" & destination=="Pune")
+	{
+		if(bus=="Airavat")
+			pri = "500";
+		else if(bus=="RajaHamsa")
+			pri="300";
+		else if(bus=="Volvo")
+			pri="400";
+		else if(bus=="SeaBird")
+			pri="350";
+		else if(bus=="Triguna")
+			pri="200";
+			
+			document.getElementById("price").innerHTML = "Unit price of Ticket : " + pri;
+			tcost(pri);
+	}
+	if(source=="Delhi" & destination=="Agra")
+	{
+		if(bus=="Airavat")
+			pri = "500";
+		else if(bus=="RajaHamsa")
+			pri="300";
+		else if(bus=="Volvo")
+			pri="400";
+		else if(bus=="SeaBird")
+			pri="350";
+		else if(bus=="Triguna")
+			pri="200";
+			
+			document.getElementById("price").innerHTML = "Unit price of Ticket : " + pri;
+			tcost(pri);
+	}
+	if(source=="Bokaro" & destination=="Ranchi")
+	{
+		if(bus=="Airavat")
+			pri = "500";
+		else if(bus=="RajaHamsa")
+			pri="300";
+		else if(bus=="Volvo")
+			pri="400";
+		else if(bus=="SeaBird")
+			pri="350";
+		else if(bus=="Triguna")
+			pri="200";
+			
+			document.getElementById("price").innerHTML = "Unit price of Ticket : " + pri;
+			tcost(pri);
+	}
+	if(source=="Ajmer" & destination=="Jaipur")
+	{
+		if(bus=="Airavat")
+			pri = "500";
+		else if(bus=="RajaHamsa")
+			pri="300";
+		else if(bus=="Volvo")
+			pri="400";
+		else if(bus=="SeaBird")
+			pri="350";
+		else if(bus=="Triguna")
+			pri="200";
+			
+			document.getElementById("price").innerHTML = "Unit price of Ticket : " + pri;
+			tcost(pri);
+	}
+	if(source=="Panaji" & destination=="Belgaum")
+	{
+		if(bus=="Airavat")
+			pri = "500";
+		else if(bus=="RajaHamsa")
+			pri="300";
+		else if(bus=="Volvo")
+			pri="400";
+		else if(bus=="SeaBird")
+			pri="350";
+		else if(bus=="Triguna")
+			pri="200";
+			
+			document.getElementById("price").innerHTML = "Unit price of Ticket : " + pri;
+			tcost(pri);
+	}
+
+}
+
+function tcost(pri){
+	var not = document.getElementsByName("radio");
+	var txt = "";
+	var i;
+	for(i = 0;i < not.length; i++){
+		if(not[i].checked){
+			txt = txt+ not[i].value + "";
+			}
+		}
+	document.getElementById("totalp").innerHTML = "You total Price is : " +txt * pri;
+	const totalP = txt * pri;
+	data.amount = totalP;
+}
+</script>
+ <script>
+		function on() {
+			document.getElementById("overlay").style.display = "block";
+		}
+		function off(){
+			document.getElementById("overlay").style.display = "none";
+		}
+	</script>
+	
+
+ <!--jQuery-->
+  <script type="text/javascript" src="../assets/lib/jquery.min.js"></script>
+
+
+</body>
+</html> 

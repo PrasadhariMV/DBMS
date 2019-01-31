@@ -1,0 +1,123 @@
+body{
+	margin:0;
+	padding:0;
+	font-family:sans-serif;
+	}
+	
+	
+	.box{
+	width:300px;
+	padding:40px;
+	position:absolute;
+	top:50%;
+	left:80%;
+	transform: translate(-50%,-50%);
+	background: #191919;
+	text-align:center;
+border-radius:20px;
+	}
+	
+	.box h1{
+		color:white;
+		font-weight:500;
+		}
+		
+		
+	.box input[type = "text"],.box input[type = "password"],.box input[type = "email"]{
+	border:0;
+	background:none;
+	display:block;
+	margin:20px auto;
+	text-align:center;
+	border:2px solid #3498db;
+	padding:14px 10px;
+	width:200px;
+	outline:none;
+	color:white;
+	border-radius:24px;
+	transition:0.20s;
+	}
+	
+	.box input[type = "text"]:focus,.box input[type = "password"]:focus,.box input[type = "email"]:focus{
+		width:280px;
+		border-color:#2ecc71;
+		}
+		
+	.box input[type = "submit"],.box input[type = "button"]{
+		border:0;
+		background:none;
+		margin:20px auto;
+		text-align:center;
+		border:2px solid #2ecc71;
+		padding:14px 30px;
+		outline:none;
+		color:white;
+		border-radius:24px;
+		transition:0.20s;
+		cursor:pointer;
+			}
+		
+	.box input[type = "submit"]:hover,.box input[type = "button"]:hover{
+		background: #2ecc71;
+		}
+	
+	.modal{
+			display:none;
+		    position:fixed; 
+			z-index:1;
+			left:0;
+			top:20px;
+			width:100%;
+			height:90%;
+			overflow:auto;
+			background-color:#191919;
+			padding-top:30px;
+	}
+	.modal-content{
+			background-color:#191919;
+			margin:0% auto 15% auto; 
+			/* border:1px solid #888; */
+			width:80%;
+	}
+	.close{
+			position:absolute;
+			right:25px;
+			top:0;
+			color:#000;
+			font-size:35px;
+			font-weight:bold;
+	}
+	.close:hover,.close:focus{
+			color:red;
+			cursor:pointer;
+	}
+	.animate{
+			-webkit-animation: animatezoom 0.6s;
+			animation:animatezoom 0.6s;
+	}
+
+	.imgcontainer{
+			text-align:center;
+			margin:24px 0 12px 0;
+			position:relative;
+	}
+	img.avatar{
+		width:40%;
+		border-radius:50%;
+	}
+	.container{
+		padding:16px;
+	}
+	span.psw{
+		float:right;
+		padding-top:16px;
+	}
+	img.img{
+		padding:200px;
+border-radius:20px;
+		
+		}
+
+
+
+

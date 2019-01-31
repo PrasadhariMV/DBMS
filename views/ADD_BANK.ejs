@@ -1,0 +1,154 @@
+<html>
+<head>
+<title>ADD BANK</title>
+<link rel="stylesheet" href="assets/css/add_bank_style.css">
+<meta name="viewport" content="width=device-width initial-scale=1.0">
+<style>
+	
+	@-webkit-keyframes animatezoom{
+			from{ -webkit-transform:scale(0)}
+			to {-webkit-transform:scale(1)}
+	}
+	@keyframes animatezoom{
+			from {transform: scale(0)}
+			to {transform:scale(1)}
+	}
+	
+	@media screen and (max-width:300px) {
+			span.psw{
+				display:block;
+				float:none;
+			}
+			.cancelbtn{
+				width:100%;
+	}
+	</style>
+</head>
+<body background="assets/images/grad2.jpg">
+	<div class="header">
+		<img src="assets/images/logo4.jpg" style="width:170px;height:70px;float:left;border-radius:20px;">
+				<div class="header-right">
+				<a href="/home">HOME</a>
+				<a href="/abtus">ABOUT</a>
+				<a href="/PROFILE">PROFILE</a>
+			</div>
+	</div>
+	<form class="box" action="/registerBank" method="post">
+	<br>
+	<h2><font style="sans-serif" color="white">You Can Add Your Bank here...</font></h2><br>
+		<div class="relative"><img src="assets/images/bank.jpg" style="float:left;height:300px;width:300px; border-radius:20px;"></div>
+		<div class="relative1"><img src="assets/images/bank1.jpg" style="float:right;height:300px;width:300px; border-radius:20px;"></div>
+		<center>
+		<div class="custom-select" style="width:200px;">
+			<select name="bankName" required>
+				<option value="" disabled selected>Bank Name :</option>
+				<option value="CANARA BANK">CANARA Bank</option>
+				<option value="State Bank of India">State Bank of India</option>
+				<option value="ICICI Bank">ICICI Bank</option>
+				<option value="AXIS Bank">AXIS Bank</option>
+				<option value="Punjab National Bank">Punjab National Bank</option>
+				<option value="Syndicate Bank">Syndicate Bank</option>
+				<option value="YES Bank">YES Bank</option>
+			</select>
+		</div>
+		</center>
+		<input type="text" id="an" placeholder="Account No." name="accountNumber" pattern="[0-9]{14}" title="14 digit account number" required>
+		<div id="overlay" onclick="off()">
+						<div id="text">Bank Added Successfully...!</div>
+						</div>
+				<input type="submit" name="" value="ADD BANK" onclick="on()">
+		</div>
+		</form>
+
+	
+	<script>
+	function on() {
+    document.getElementById("overlay").style.display = "block";
+	}
+	function off(){
+	document.getElementById("overlay").style.display = "none";
+		}
+	</script>
+	<script>
+	var x,i,j,selElmt,a,b,c;
+		x = document.getElementsByClassName("custom-select");
+			for(i = 0; i < x.length; i++)
+			{
+				selElmt = x[i].getElementsByTagName("select")[0];
+				a = document.createElement("DIV");
+				a.setAttribute("class","select-selected");
+				a.innerHTML = selElmt.options[selElmt.selectedIndex].innerHTML;
+				x[i].appendChild(a);
+				b = document.createElement("DIV");
+				b.setAttribute("class","select-items select-hide");
+				for(j = 0; j < selElmt.length; j++)
+				{
+					c = document.createElement("DIV");
+					c.innerHTML = selElmt.options[j].innerHTML;
+					c.addEventListener("click",function(e) 
+								{
+									var y,i,k,s,h;
+									s = this.parentNode.parentNode.getElementsByTagName("select")[0];
+									h = this.parentNode.previousSibling;
+									for(i=0;i<s.length;i++)
+									{
+										if(s.options[i].innerHTML == this.innerHTML)
+										{
+										
+												s.selectedIndex = i;
+												h.innerHTML = this.innerHTML;
+												y = this.parentNode.getElementsByClassName("same-as-selected");
+												for(k=0;k<y.length;k++){
+												y[k].removeAttribute("class");
+												}
+												this.setAttribute("class","same-as-selected");
+												break;
+										}
+									}
+									h.click();
+								});
+								b.appendChild(c);
+				}
+					x[i].appendChild(b);
+					
+					a.addEventListener("click",function(e)
+					{
+						e.stopPropagation();
+						closeAllSelect(this);
+						this.nextSibling.classList.toggle("select-hide");
+						this.classList.toggle("select-arrow-active");
+					});
+			}
+			function closeAllSelect(elmnt)
+					{
+						var x,y,i,arrNo = [];
+						x = document.getElementsByClassName("select-items");
+						y = document.getElementsByClassName("select-selected");
+						for(i=0;i<y.length;i++)
+						{
+							if(elmnt==y[i]){
+							arrNo.push(i);}
+							else{
+							y[i].classList.remove("select-arrow-active");
+							}
+						}
+						for(i=0;i<x.length;i++)
+						{
+							if(arrNo.indexOf(i)){
+								x[i].classList.add("select-hide");
+							}
+						}
+					}
+		document.addEventListener("click",closeAllSelect);
+	</script>
+	<!-- password verification -->
+	<script>
+		var modal = document.getElementById('id01');
+		window.onclick = function(event){ 
+				if (event.target == modal ) {
+						modal.style.display = "none";
+					}
+			}
+	</script>
+</body>
+</html>

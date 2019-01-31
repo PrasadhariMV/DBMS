@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+	<meta charset="utf-8">
+	<title> LOGIN </title>
+	<link rel="stylesheet" href="assets/css/style.css">
+	<style>
+	
+		@-webkit-keyframes animatezoom{
+			from{ -webkit-transform:scale(0)}
+			to {-webkit-transform:scale(1)}
+	}
+	@keyframes animatezoom{
+			from {transform: scale(0)}
+			to {transform:scale(1)}
+	}
+	
+	@media screen and (max-width:300px) {
+			span.psw{
+				display:block;
+				float:none;
+			}
+			.cancelbtn{
+				width:100%;
+	img.img{
+		left:20%;
+		<!-- border-radius:50%; -->
+		}
+	</style>
+</head>
+<body background="assets/images/grad2.jpg">
+<br> 
+	<img src="assets/images/logo5.png" alt="avatar" class="img" width="500px" height="400px">
+		
+		<form action="/signin" method="POST" class="box">
+			<h1> LOG IN </h1>
+		    <input type="email" placeholder="Email-ID" name="email" id="email"  pattern="[a-z0-9._%+-]+@[a-z0-9._]+\.[a-z]{2,3]$" title="Format : <characters>@<characters>.domain" required>
+		   <input type="text" placeholder="Mobile.no"  pattern="[0-9]{10}" title="Ten digit phone number" required>
+		   <input type="password" id="psw" placeholder="Password" name="password" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}" title="Must contain at least one number and one uppercase and lowercase letter, and at least 8 or more characters" required>
+		  <input type="submit">
+	   </form>
+</body>
+</html>
